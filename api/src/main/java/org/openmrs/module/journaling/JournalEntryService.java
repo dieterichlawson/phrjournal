@@ -15,6 +15,7 @@ package org.openmrs.module.journaling;
 
 import java.util.List;
 
+import org.openmrs.Person;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
 import org.openmrs.module.journaling.domain.JournalEntry;
@@ -40,7 +41,14 @@ public interface JournalEntryService extends OpenmrsService {
 	@Transactional(readOnly = true)
 	public JournalEntry getJournalEntry(Integer entryId);
 	
-
+	/**
+	 * @param p the person who wrote the journal entries
+	 * @return all journal entries written by person p
+	 * @should return entries written by supplied person
+	 */
+	@Transactional(readOnly = true)
+	public List<JournalEntry> getJournalEntryForPerson(Person p);
+	
 	/**
 	 * Create or update journal entry
 	 */

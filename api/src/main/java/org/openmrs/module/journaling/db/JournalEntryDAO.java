@@ -15,6 +15,7 @@ package org.openmrs.module.journaling.db;
 
 import java.util.List;
 
+import org.openmrs.Person;
 import org.openmrs.module.journaling.domain.JournalEntry;
 
 public interface JournalEntryDAO {
@@ -26,5 +27,7 @@ public interface JournalEntryDAO {
     public JournalEntry getJournalEntry(Integer entryId);
 
     public void saveJournalEntry(JournalEntry entry);
+
+    public List<JournalEntry> getJournalEntryForPerson(Person p);
 
 }

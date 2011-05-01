@@ -20,6 +20,7 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.openmrs.Person;
 import org.openmrs.module.journaling.db.JournalEntryDAO;
 import org.openmrs.module.journaling.domain.JournalEntry;
 
@@ -66,4 +67,13 @@ public class HibernateJournalEntryDAO implements JournalEntryDAO {
 	public void deleteJournalEntry(JournalEntry entry) {
 		sessionFactory.getCurrentSession().delete(entry);
 	}
+
+	/**
+     * @see org.openmrs.module.journaling.db.JournalEntryDAO#getJournalEntryForPerson(org.openmrs.Person)
+     */
+    public List<JournalEntry> getJournalEntryForPerson(Person p) {
+	    Criteria c = sessionFactory.getCurrentSession().createCriteria(JournalEntry.class);
+	    c.add(Restrictions.eq("creator",p));
+	    return c.list();
+    }
 }

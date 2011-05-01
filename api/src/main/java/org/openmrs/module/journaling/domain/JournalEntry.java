@@ -23,6 +23,14 @@ import org.openmrs.Person;
  */
 public class JournalEntry extends BaseOpenmrsObject{
 
+	private JournalEntry(){}
+	public JournalEntry(String title, String content) {
+	    super();
+	    this.title = title;
+	    this.content = content;
+	    this.dateCreated = new Date();
+    }
+
 	private Integer entryId;
 	
 	private String title;

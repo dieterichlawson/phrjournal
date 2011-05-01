@@ -15,6 +15,7 @@ package org.openmrs.module.journaling.impl;
 
 import java.util.List;
 
+import org.openmrs.Person;
 import org.openmrs.api.APIException;
 import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.journaling.JournalEntryService;
@@ -59,5 +60,12 @@ public class JournalEntryServiceImpl extends BaseOpenmrsService implements Journ
 	public void saveJournalEntry(JournalEntry entry) throws APIException {
 		dao.saveJournalEntry(entry);
 	}
+
+	/**
+     * @see org.openmrs.module.journaling.JournalEntryService#getJournalEntryForPerson(org.openmrs.Person)
+     */
+    public List<JournalEntry> getJournalEntryForPerson(Person p) {
+	    return dao.getJournalEntryForPerson(p);
+    }
 	
 }
