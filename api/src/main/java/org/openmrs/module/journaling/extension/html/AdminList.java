@@ -14,6 +14,7 @@
 package org.openmrs.module.journaling.extension.html;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.openmrs.module.Extension;
@@ -37,14 +38,16 @@ public class AdminList extends AdministrationSectionExt {
 	 * @see org.openmrs.module.web.extension.AdministrationSectionExt#getTitle()
 	 */
 	public String getTitle() {
-		return "basicmodule.title";
+		return "journaling.title";
 	}
 	
 	/**
 	 * @see org.openmrs.module.web.extension.AdministrationSectionExt#getLinks()
 	 */
 	public Map<String, String> getLinks() {
-		
-	}
-	
+		HashMap<String, String> links = new LinkedHashMap<String,String>();
+		links.put("module/journaling/journal.form", "journaling.my.journal");
+		links.put("module/journaling/new_entry.form", "journaling.new.entry");
+		return links;
+	}	
 }

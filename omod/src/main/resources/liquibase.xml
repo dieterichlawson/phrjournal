@@ -12,7 +12,7 @@
         See http://www.liquibase.org/manual/home#available_database_refactorings
         for a list of supported elements and attributes
     -->
- 
+ <!-- 
  	
 	<changeSet id="journaling-2011-04-30-20:50" author="bwolfe">
 		<preConditions onFail="MARK_RAN">
@@ -33,5 +33,5 @@
 			<column name="testid" type="int" />
 		</createTable>
     </changeSet>
- 
+  -->
 </databaseChangeLog>
