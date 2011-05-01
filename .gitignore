@@ -1,0 +1,4 @@
+*.class
+.svn
+api/target
+omod/target
