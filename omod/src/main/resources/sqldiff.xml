@@ -1,0 +1,24 @@
+<sqldiff version="1.0">
+	<help>
+	</help>
+
+	<diff>
+		<version>0.9</version>
+		<author>Dieterich Lawson</author>
+		<date>April 30th, 2011</date>
+		<description>
+			Creating journal entries table
+		</description>
+		<sql>
+			CREATE TABLE IF NOT EXISTS journaling_entry (
+				`entry_id` int(11) NOT NULL auto_increment,
+				`uuid` char(38) NOT NULL,
+				`title` varchar(255) NOT NULL default '',
+				`content` TEXT,
+				`creator` int(11) NOT NULL default 0,
+				`date_created` datetime default null,
+				PRIMARY KEY (entry_id)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8;	
+		</sql>
+	</diff>
+</sqldiff>

@@ -21,9 +21,6 @@
 		<class>@MODULE_PACKAGE@.extension.html.AdminList</class>
 	</extension>
 	
-	
-
-	
 	<!-- Required Privileges 
 	<privilege>
 		<name>Form Entry</name>
@@ -79,6 +76,11 @@
 		<file>messages.properties</file>
 	</messages>
 	<!-- /Internationalization -->
+	
+		
+	<mappingFiles>
+		${omodHbmConfig}
+	</mappingFiles>
 	
 </module>
 
