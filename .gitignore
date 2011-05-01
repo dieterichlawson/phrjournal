@@ -1,4 +1,4 @@
 *.class
-.svn
-api/target
-omod/target
+.svn/
+api/target/
+omod/target/
