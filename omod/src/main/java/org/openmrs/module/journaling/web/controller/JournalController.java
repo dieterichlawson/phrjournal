@@ -30,7 +30,7 @@ public class JournalController {
 	@RequestMapping(value = "/module/journaling/journal")
 	public void populateModel(HttpServletRequest request){
 		HttpSession session = request.getSession();
-		List<JournalEntry> entries = Context.getService(JournalEntryService.class).getJournalEntryForPerson(Context.getAuthenticatedUser().getPerson());
+		List<JournalEntry> entries = Context.getService(JournalEntryService.class).getJournalEntryForPerson(Context.getAuthenticatedUser().getPerson(),true);
 		session.setAttribute("entries", entries);
 	}
 }
