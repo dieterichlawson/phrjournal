@@ -64,8 +64,8 @@ public class JournalEntryServiceImpl extends BaseOpenmrsService implements Journ
 	/**
      * @see org.openmrs.module.journaling.JournalEntryService#getJournalEntryForPerson(org.openmrs.Person)
      */
-    public List<JournalEntry> getJournalEntryForPerson(Person p) {
-	    return dao.getJournalEntryForPerson(p);
+    public List<JournalEntry> getJournalEntryForPerson(Person p, Boolean orderByDateDesc ) {
+	    return dao.getJournalEntryForPerson(p, orderByDateDesc);
     }
 	
 }

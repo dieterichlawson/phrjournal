@@ -45,9 +45,10 @@ public interface JournalEntryService extends OpenmrsService {
 	 * @param p the person who wrote the journal entries
 	 * @return all journal entries written by person p
 	 * @should return entries written by supplied person
+	 * @should return entries ordered by date
 	 */
 	@Transactional(readOnly = true)
-	public List<JournalEntry> getJournalEntryForPerson(Person p);
+	public List<JournalEntry> getJournalEntryForPerson(Person p, Boolean orderByDateDesc);
 	
 	/**
 	 * Create or update journal entry

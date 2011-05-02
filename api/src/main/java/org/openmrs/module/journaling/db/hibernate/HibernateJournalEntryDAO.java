@@ -19,6 +19,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.Person;
 import org.openmrs.module.journaling.db.JournalEntryDAO;
@@ -71,8 +72,15 @@ public class HibernateJournalEntryDAO implements JournalEntryDAO {
 	/**
      * @see org.openmrs.module.journaling.db.JournalEntryDAO#getJournalEntryForPerson(org.openmrs.Person)
      */
-    public List<JournalEntry> getJournalEntryForPerson(Person p) {
+    public List<JournalEntry> getJournalEntryForPerson(Person p, Boolean orderByDateDesc) {
 	    Criteria c = sessionFactory.getCurrentSession().createCriteria(JournalEntry.class);
+	    if(orderByDateDesc != null){
+	    	if(orderByDateDesc){
+	    		c.addOrder(Order.desc("dateCreated"));
+	    	}else{
+	    		c.addOrder(Order.asc("dateCreated"));
+	    	}
+	    }
 	    c.add(Restrictions.eq("creator",p));
 	    return c.list();
     }

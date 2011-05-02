@@ -28,6 +28,6 @@ public interface JournalEntryDAO {
 
     public void saveJournalEntry(JournalEntry entry);
 
-    public List<JournalEntry> getJournalEntryForPerson(Person p);
+    public List<JournalEntry> getJournalEntryForPerson(Person p, Boolean orderByDateDesc);
 
 }
