@@ -26,7 +26,7 @@
 			<div id="header-bar">
 				<span id="title">Compose Journal Entry</span>
 				<input type="submit" id="save-button" value="Save"></input>
-				<button id="cancel-button" onclick="cancelPost()">Cancel</button>
+				<button type="button" id="cancel-button" onclick="cancelPost(); return false;">Cancel</button>
 			</div>
 			<div id="compose-title-bar">
 				<label for="title-textbox">Title</label>
@@ -55,6 +55,5 @@
 	});
 	function cancelPost(){
 		window.location = "journal.form";
-		return false;
 	}
 </script>
