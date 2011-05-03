@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.journaling.JournalEntryService;
 import org.openmrs.module.journaling.domain.JournalEntry;
+import org.openmrs.web.WebConstants;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,16 +29,32 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 public class NewEntryController {
 
+	boolean shouldReset = true;
 	@RequestMapping(value = "/module/journaling/new_entry")
 	public void populateModel(HttpServletRequest request){
-		
+		if(shouldReset){
+			request.getSession().setAttribute("content", "");
+			request.getSession().setAttribute("title", "");
+		}else{
+			shouldReset=true;
+		}
 	}
 	
 	@RequestMapping(value="/module/journaling/create_entry", method=RequestMethod.POST)
 	public ModelAndView saveEntry(@RequestParam("title") String title,
 								   @RequestParam("content") String content,
 								   HttpServletRequest request){
-		
+		if(title.trim().equals("")|| title ==null){
+			request.getSession().setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "Please choose a title.");
+			request.getSession().setAttribute("content", content);
+			shouldReset=false;
+			return new ModelAndView(new RedirectView("new_entry.form"));
+		}else if(content.trim().equals("")|| content==null){
+			request.getSession().setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "There was no text in your journal entry.");
+			request.getSession().setAttribute("title", title);
+			shouldReset=false;
+			return new ModelAndView(new RedirectView("new_entry.form"));
+		}
 		JournalEntry entry = new JournalEntry(title,content);
 		entry.setCreator(Context.getAuthenticatedUser().getPerson());
 		Context.getService(JournalEntryService.class).saveJournalEntry(entry);
