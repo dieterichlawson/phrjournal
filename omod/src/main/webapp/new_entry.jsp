@@ -53,7 +53,9 @@
 		    $j("#entry-content").val(html);
 	    }); 
 	});
+	
 	function cancelPost(){
 		window.location = "journal.form";
 	}
+	
 </script>

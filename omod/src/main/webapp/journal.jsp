@@ -5,7 +5,7 @@
 
 	<div id="module-content">
 		<div id="nav-bar">
-			<button id="new-entry-button">New Entry</button>
+			<button id="new-entry-button" type="button" onclick="newEntry(); return false;">New Entry</button>
 			<label for="search-box">Search</label><input type="text" id="search-box"></input>
 			<div id="entries-by-month-nav">
 				<ol>
@@ -40,3 +40,9 @@
 	</div>
 
 <%@ include file="/WEB-INF/template/footer.jsp" %>
+<script type="text/javascript">
+
+	function newEntry(){
+		window.location="new_entry.form";
+	}
+</script>
