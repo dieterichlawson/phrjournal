@@ -12,6 +12,20 @@
 			</div>
 		</div>
 		<div id="entry-pane">
+			<div id="search-pane">
+				<span id="search-text"></span>
+				<div id="search-action-div">
+					<form method="get" action="<openmrs:contextPath/>/module/journaling/search.form" id="search-form">    
+						<input type="text" id="search-box" name="search-text"></input>
+						<input id="search-button" type="submit" value="Search"></input>
+					</form>
+				</div>
+			</div>
+			<c:if test="${empty entries}">
+				<div id="no-results">
+					<span id="no-results-text">There were no journal entries matching your search.</span>
+				</div>
+			</c:if>
 			<c:forEach var="entry" items="${entries}">
 				<div class="entry">
 					<div class="title-bar">

@@ -19,6 +19,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.Person;
@@ -83,5 +84,25 @@ public class HibernateJournalEntryDAO implements JournalEntryDAO {
 	    }
 	    c.add(Restrictions.eq("creator",p));
 	    return c.list();
+    }
+
+    public List<JournalEntry> findEntries(String searchText, Person p, Boolean orderByDateDesc) {
+    	Criteria c = sessionFactory.getCurrentSession().createCriteria(JournalEntry.class);
+    	if(searchText != null && !searchText.trim().equals("")){
+    		c.add(Restrictions.or(Restrictions.like("title", searchText,MatchMode.ANYWHERE),
+    							  Restrictions.like("content", searchText,MatchMode.ANYWHERE)));
+    		
+    	}
+    	if(p != null){
+    		c.add(Restrictions.eq("creator",p));
+    	}
+    	if(orderByDateDesc != null){
+    		if(orderByDateDesc){
+	    		c.addOrder(Order.desc("dateCreated"));
+	    	}else{
+	    		c.addOrder(Order.asc("dateCreated"));
+	    	}
+    	}
+    	return c.list();
     }
 }

@@ -23,14 +23,32 @@ import org.openmrs.module.journaling.JournalEntryService;
 import org.openmrs.module.journaling.domain.JournalEntry;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class JournalController {
 	
+	private boolean searching = false;
+	
 	@RequestMapping(value = "/module/journaling/journal")
 	public void populateModel(HttpServletRequest request){
+		if(!searching){
+			HttpSession session = request.getSession();
+			List<JournalEntry> entries = Context.getService(JournalEntryService.class).getJournalEntryForPerson(Context.getAuthenticatedUser().getPerson(),true);
+			session.setAttribute("entries", entries);	
+		}
+		searching=false;
+	}
+	
+	@RequestMapping(value="/module/journaling/search", method=RequestMethod.GET)
+	public ModelAndView searchEntries(@RequestParam("search-text") String searchText,HttpServletRequest request){
 		HttpSession session = request.getSession();
-		List<JournalEntry> entries = Context.getService(JournalEntryService.class).getJournalEntryForPerson(Context.getAuthenticatedUser().getPerson(),true);
+		List<JournalEntry> entries = Context.getService(JournalEntryService.class).findEntries(searchText, Context.getAuthenticatedUser().getPerson(), true);
 		session.setAttribute("entries", entries);
+		searching=true;
+		return new ModelAndView(new RedirectView("journal.form"));
 	}
 }

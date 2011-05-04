@@ -38,8 +38,15 @@ ol a:hover, ol a:active{
         width:50%;
         margin-top:10px;
 }
+#search-pane{
+        padding:5px 5px 0px 5px;
+}
+#search-action-div{
+        float:right;
+}
 #search-box{
-        width:80%;
+        margin-right:3px;
+        width:300px;
 }
 #entry-pane{
         margin-left:260px;
@@ -63,4 +70,9 @@ ol a:hover, ol a:active{
         position:absolute;
         bottom:2px;
         right:2px;
+}
+#no-results{
+	text-align:center;
+	font-size:1.2em;
+	margin:50px 0px 30px 0px;
 }

@@ -30,4 +30,6 @@ public interface JournalEntryDAO {
 
     public List<JournalEntry> getJournalEntryForPerson(Person p, Boolean orderByDateDesc);
 
+    public List<JournalEntry> findEntries(String searchText, Person p, Boolean orderByDateDesc);
+
 }
