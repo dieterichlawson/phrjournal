@@ -1,43 +1,66 @@
+#entries-by-month-nav{
+        margin-top:10px;
+}
 ol{
-	list-style:none;
+        list-style:none;
+}
+#month-list{
+        padding-left:20px;
+        margin-top:5px;
+}
+.month-link {
+        list-style:disc;
+}
+ol a:link, ol a:visited{
+        text-decoration:none;
+}
+ol a:hover, ol a:active{
+        text-decoration:underline;
+}
+#month-title-span{
+        border-bottom:1px solid black;
+        margin:5px 10px 0px 10px;
+        width:100%;
 }
 #module-content{
-	width:80%;
-	margin:auto;
-	position:relative;
+        width:80%;
+        margin:auto;
+        position:relative;
 }
 #nav-bar{
-	float:left;
-	width:250px;
-	border:1px solid black;
+        float:left;
+        width:250px;
+        border:1px solid black;
 }
 #new-entry-button{
-	display:block;
-	width:80%;
+        margin:auto;
+        display:block;
+        width:50%;
+        margin-top:10px;
 }
 #search-box{
-	width:80%;
+        width:80%;
 }
 #entry-pane{
-	margin-left:260px;
-	border:1px solid black;
+        margin-left:260px;
+        border:1px solid black;
 }
 .entry{
-	margin:30px 20px;
+        margin:30px 20px;
 }
 .title-bar{
-	border-bottom:1px solid black;
-	margin-bottom:20px;
-	position:relative;
+        border-bottom:1px solid black;
+        margin-bottom:20px;
+        position:relative;
 }
 .entry-title{
-	font-weight:bold;
-	font-size:1.5em;
+        font-weight:bold;
+        font-size:1.5em;
 }
 .entry-date{
-	color:grey;
-	font-size:0.8em;
-	position:absolute;
-	bottom:2px;
-	right:2px;
+        color:grey;
+        font-size:0.8em;
+        position:absolute;
+        bottom:2px;
+        right:2px;
 }

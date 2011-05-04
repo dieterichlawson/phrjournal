@@ -6,24 +6,9 @@
 	<div id="module-content">
 		<div id="nav-bar">
 			<button id="new-entry-button" type="button" onclick="newEntry(); return false;">New Entry</button>
-			<label for="search-box">Search</label><input type="text" id="search-box"></input>
 			<div id="entries-by-month-nav">
-				<ol>
-					<li>August
-						<ol>
-							<li>Walk in the Park</li>
-							<li>Walk in the Field</li>
-							<li>Walk in the Hay</li>
-						</ol>
-					</li>
-					<li>May
-						<ol>
-							<li>Walk in the Park</li>
-							<li>Walk in the Field</li>
-							<li>Walk in the Hay</li>
-						</ol>
-					</li>
-				</ol>
+				 <span id="month-title-span">Past Entries</span>
+				<ol id="month-list"></ol>
 			</div>
 		</div>
 		<div id="entry-pane">
@@ -40,9 +25,51 @@
 	</div>
 
 <%@ include file="/WEB-INF/template/footer.jsp" %>
+<openmrs:htmlInclude file="/dwr/engine.js"/>
+<openmrs:htmlInclude file="/dwr/util.js"/>
+<script src="<openmrs:contextPath/>/dwr/interface/DWRJournalEntryService.js"></script>
 <script type="text/javascript">
+	var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
+	$j(document).ready(function(){
+		DWRJournalEntryService.getJournalEntries(function(posts){createNavList(posts)});
+	});
+	
 	function newEntry(){
 		window.location="new_entry.form";
+	}
+	
+	function createNavList(posts){
+		var postsByMonth={};
+		for(var i = 0; i < posts.length; i++){
+			var post = posts[i];
+			var postMonth = new Date(post.dateCreated).getMonth()
+			if(!(postMonth in postsByMonth)){ 
+				postsByMonth[postMonth] = [post];
+			}else{
+				postsByMonth[postMonth].push(post);
+			}
+		}
+		for(var monthSet in postsByMonth){
+			createMonth(postsByMonth[monthSet]);
+		}
+	}
+	
+	function createMonth(posts){
+		var listHTML = "<li><a href=\"#\" class=\"month-link\" onclick=\"expand('#id-list')\" id=\"#id-link\">#mon</a><ol id=\"#id-list\" style=\"display:none;\"></ol></li>"
+		var date = new Date(posts[0].dateCreated);
+		var idString = date.getMonth() + "-" + date.getFullYear();
+		var monthString = months[date.getMonth()];
+		listHTML = listHTML.replace(new RegExp("#id",'g'),idString);
+		listHTML = listHTML.replace(new RegExp("#mon",'g'),monthString);
+		var monthList = $j(listHTML);
+		for(var i = 0; i < posts.length; i++){
+			$j("<li><a class=\"post-link\" href=\"#\">"+posts[i].title+"</a></li>").appendTo(monthList.find("#"+idString+"-list"));
+		}
+		monthList.appendTo("#month-list");
+	}
+	
+	function expand(toExpand){
+		$j("#"+toExpand).toggle(100);
 	}
 </script>
