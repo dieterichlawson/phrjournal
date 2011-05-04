@@ -16,7 +16,7 @@
 				<div class="entry">
 					<div class="title-bar">
 						<span class="entry-title">${entry.title}</span>
-						<span class="entry-date">${entry.dateCreated}</span>
+						<span class="entry-date"><openmrs:formatDate date="${entry.dateCreated}" format="MM/dd/yyyy K:mm a"/></span>
 					</div>
 					<div class="entry-content" >${entry.content}</div>
 				</div>
