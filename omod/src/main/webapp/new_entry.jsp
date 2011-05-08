@@ -1,13 +1,13 @@
 <%@ include file="/WEB-INF/template/include.jsp"%>
 
 <!-- YUI Text Editor includes -->
-<link rel="stylesheet" type="text/css" href="<openmrs:contextPath/>/moduleResources/journaling/yui-text-editor/skin.css">
-<script type="text/javascript" src="<openmrs:contextPath/>/moduleResources/journaling/yui-text-editor/yahoo-dom-event.js"></script>
-<script type="text/javascript" src="<openmrs:contextPath/>/moduleResources/journaling/yui-text-editor/element-min.js"></script>
-<script type="text/javascript" src="<openmrs:contextPath/>/moduleResources/journaling/yui-text-editor/container_core-min.js"></script>
-<script type="text/javascript" src="<openmrs:contextPath/>/moduleResources/journaling/yui-text-editor/menu-min.js"></script>
-<script type="text/javascript" src="<openmrs:contextPath/>/moduleResources/journaling/yui-text-editor/button-min.js"></script>
-<script type="text/javascript" src="<openmrs:contextPath/>/moduleResources/journaling/yui-text-editor/editor-min.js"></script>
+<link rel="stylesheet" type="text/css" href="<openmrs:contextPath/>/moduleResources/phrjournal/yui-text-editor/skin.css">
+<script type="text/javascript" src="<openmrs:contextPath/>/moduleResources/phrjournal/yui-text-editor/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="<openmrs:contextPath/>/moduleResources/phrjournal/yui-text-editor/element-min.js"></script>
+<script type="text/javascript" src="<openmrs:contextPath/>/moduleResources/phrjournal/yui-text-editor/container_core-min.js"></script>
+<script type="text/javascript" src="<openmrs:contextPath/>/moduleResources/phrjournal/yui-text-editor/menu-min.js"></script>
+<script type="text/javascript" src="<openmrs:contextPath/>/moduleResources/phrjournal/yui-text-editor/button-min.js"></script>
+<script type="text/javascript" src="<openmrs:contextPath/>/moduleResources/phrjournal/yui-text-editor/editor-min.js"></script>
 <script type="text/javascript">	
 	var myEditor = new YAHOO.widget.SimpleEditor('entry-content', {
 	    height: '20em',
@@ -16,13 +16,13 @@
 	myEditor.render();
 </script>
 
-<link rel="stylesheet" href="<openmrs:contextPath/>/moduleResources/journaling/css/new_entry.css" type="text/css"/>
+<link rel="stylesheet" href="<openmrs:contextPath/>/moduleResources/phrjournal/css/new_entry.css" type="text/css"/>
 <%@ include file="/WEB-INF/template/header.jsp"%>
 
 
 
 	<div id="module-content">
-		<form method="post" action="<openmrs:contextPath/>/module/journaling/create_entry.form" id="new-entry-form">
+		<form method="post" action="<openmrs:contextPath/>/module/phrjournal/create_entry.form" id="new-entry-form">
 			<div id="header-bar">
 				<span id="title">Compose Journal Entry</span>
 				<input type="submit" id="save-button" value="Save"></input>

@@ -11,7 +11,7 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.journaling.extension.html;
+package org.openmrs.module.phrjournal.extension.html;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -38,7 +38,7 @@ public class AdminList extends AdministrationSectionExt {
 	 * @see org.openmrs.module.web.extension.AdministrationSectionExt#getTitle()
 	 */
 	public String getTitle() {
-		return "journaling.title";
+		return "phrjournal.title";
 	}
 	
 	/**
@@ -46,8 +46,8 @@ public class AdminList extends AdministrationSectionExt {
 	 */
 	public Map<String, String> getLinks() {
 		HashMap<String, String> links = new LinkedHashMap<String,String>();
-		links.put("module/journaling/journal.form", "journaling.my.journal");
-		links.put("module/journaling/new_entry.form", "journaling.new.entry");
+		links.put("module/phrjournal/journal.form", "phrjournal.my.journal");
+		links.put("module/phrjournal/new_entry.form", "phrjournal.new.entry");
 		return links;
 	}	
 }

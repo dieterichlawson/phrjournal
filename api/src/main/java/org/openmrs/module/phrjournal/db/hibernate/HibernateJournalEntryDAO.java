@@ -11,7 +11,7 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.journaling.db.hibernate;
+package org.openmrs.module.phrjournal.db.hibernate;
 
 import java.util.List;
 
@@ -23,8 +23,8 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.Person;
-import org.openmrs.module.journaling.db.JournalEntryDAO;
-import org.openmrs.module.journaling.domain.JournalEntry;
+import org.openmrs.module.phrjournal.db.JournalEntryDAO;
+import org.openmrs.module.phrjournal.domain.JournalEntry;
 
 /**
  *
@@ -40,7 +40,7 @@ public class HibernateJournalEntryDAO implements JournalEntryDAO {
 	}
 	
 	/**
-	 * @see org.openmrs.module.journaling.db.JournalEntryDAO#getAllJournalEntries()
+	 * @see org.openmrs.module.phrjournal.db.JournalEntryDAO#getAllJournalEntries()
 	 */
 	public List<JournalEntry> getAllJournalEntries() {
 		Criteria c = sessionFactory.getCurrentSession().createCriteria(JournalEntry.class);
@@ -48,7 +48,7 @@ public class HibernateJournalEntryDAO implements JournalEntryDAO {
 	}
 	
 	/**
-	 * @see org.openmrs.module.journaling.db.JournalEntryDAO#getJournalEntry(java.lang.Integer)
+	 * @see org.openmrs.module.phrjournal.db.JournalEntryDAO#getJournalEntry(java.lang.Integer)
 	 */
 	public JournalEntry getJournalEntry(Integer entryId) {
 		Criteria c = sessionFactory.getCurrentSession().createCriteria(JournalEntry.class);
@@ -57,21 +57,21 @@ public class HibernateJournalEntryDAO implements JournalEntryDAO {
 	}
 	
 	/**
-	 * @see org.openmrs.module.journaling.db.JournalEntryDAO#saveJournalEntry(org.openmrs.module.journaling.domain.JournalEntry)
+	 * @see org.openmrs.module.phrjournal.db.JournalEntryDAO#saveJournalEntry(org.openmrs.module.phrjournal.domain.JournalEntry)
 	 */
 	public void saveJournalEntry(JournalEntry entry) {
 		sessionFactory.getCurrentSession().saveOrUpdate(entry);
 	}
 	
 	/**
-	 * @see org.openmrs.module.journaling.db.JournalEntryDAO#deleteJournalEntry(org.openmrs.module.journaling.domain.JournalEntry)
+	 * @see org.openmrs.module.phrjournal.db.JournalEntryDAO#deleteJournalEntry(org.openmrs.module.phrjournal.domain.JournalEntry)
 	 */
 	public void deleteJournalEntry(JournalEntry entry) {
 		sessionFactory.getCurrentSession().delete(entry);
 	}
 
 	/**
-     * @see org.openmrs.module.journaling.db.JournalEntryDAO#getJournalEntryForPerson(org.openmrs.Person)
+     * @see org.openmrs.module.phrjournal.db.JournalEntryDAO#getJournalEntryForPerson(org.openmrs.Person)
      */
     public List<JournalEntry> getJournalEntryForPerson(Person p, Boolean orderByDateDesc) {
 	    Criteria c = sessionFactory.getCurrentSession().createCriteria(JournalEntry.class);

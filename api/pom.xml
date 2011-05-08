@@ -3,14 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.openmrs.module</groupId>
-		<artifactId>journaling</artifactId>
+		<artifactId>phrjournal</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>org.openmrs.module</groupId>
-	<artifactId>journaling-api</artifactId>
+	<artifactId>phrjournal-api</artifactId>
 	<packaging>jar</packaging>
-	<name>Journaling Module API</name>
-	<description>API project for Journaling Module</description>
+	<name>PHR phrjournal Module API</name>
+	<description>API project for PHR Journal Module</description>
 
 	<dependencies>
 		<!-- 

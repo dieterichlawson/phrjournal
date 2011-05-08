@@ -28,6 +28,10 @@ misha680
 
 impl
 dir
+
+
+
+delete
 
 BasicModuleActivator.java
 file
@@ -68,29 +72,10 @@ dir
 
 advice
 dir
-
-JournalingModuleActivator.java
-file
 
 
 
-add
-
-24267c9b1f0135bc697690af914d0491
-
-
-
-
-
-
-
-
-
-
-
-copied
-http://svn.openmrs.org/openmrs-modules/basicmodule/trunk/api/src/main/java/org/openmrs/module/basicmodule/BasicModuleActivator.java
-19695
+delete
 
 extension
 dir

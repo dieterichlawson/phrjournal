@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class table="journaling_entry" name="@MODULE_PACKAGE@.domain.JournalEntry">
+    <class table="phrjournal_entry" name="@MODULE_PACKAGE@.domain.JournalEntry">
        <id name="entryId" type="int" column="entry_id"  unsaved-value="0">
 				<generator class="native" />
 		</id>

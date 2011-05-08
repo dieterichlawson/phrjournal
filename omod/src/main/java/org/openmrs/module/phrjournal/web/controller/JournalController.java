@@ -11,7 +11,7 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.journaling.web.controller;
+package org.openmrs.module.phrjournal.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,8 @@ import javax.servlet.http.HttpSession;
 
 import org.openmrs.User;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.journaling.JournalEntryService;
-import org.openmrs.module.journaling.domain.JournalEntry;
+import org.openmrs.module.phrjournal.JournalEntryService;
+import org.openmrs.module.phrjournal.domain.JournalEntry;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class JournalController {
 
-	@RequestMapping(value="/module/journaling/journal", method=RequestMethod.GET)
+	@RequestMapping(value="/module/phrjournal/journal", method=RequestMethod.GET)
 	public void getEntry(@RequestParam(value="id",required=false) Integer id,
 	                     @RequestParam(value="search",required=false) String searchText,
 	                     HttpServletRequest request){

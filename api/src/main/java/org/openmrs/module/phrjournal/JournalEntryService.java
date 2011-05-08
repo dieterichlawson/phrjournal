@@ -11,14 +11,14 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.journaling;
+package org.openmrs.module.phrjournal;
 
 import java.util.List;
 
 import org.openmrs.Person;
 import org.openmrs.api.APIException;
 import org.openmrs.api.OpenmrsService;
-import org.openmrs.module.journaling.domain.JournalEntry;
+import org.openmrs.module.phrjournal.domain.JournalEntry;
 import org.springframework.transaction.annotation.Transactional;
 
 /**

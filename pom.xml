@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.openmrs.module</groupId>
-	<artifactId>journaling</artifactId>
+	<artifactId>phrjournal</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Journaling Module</name>
-	<description>Journaling inside of OpenMRS</description>
+	<name>PHR Journal Module</name>
+	<description>Journaling inside of OpenMRS for a PHR</description>
 
 	<modules>
 		<module>api</module>

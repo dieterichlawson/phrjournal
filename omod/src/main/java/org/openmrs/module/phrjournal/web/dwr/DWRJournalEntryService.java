@@ -11,13 +11,13 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.journaling.web.dwr;
+package org.openmrs.module.phrjournal.web.dwr;
 
 import java.util.List;
 
 import org.openmrs.api.context.Context;
-import org.openmrs.module.journaling.JournalEntryService;
-import org.openmrs.module.journaling.domain.JournalEntry;
+import org.openmrs.module.phrjournal.JournalEntryService;
+import org.openmrs.module.phrjournal.domain.JournalEntry;
 
 public class DWRJournalEntryService {	
 	public List<JournalEntry> getJournalEntries(){

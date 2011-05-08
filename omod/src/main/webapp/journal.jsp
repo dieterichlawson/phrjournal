@@ -1,7 +1,7 @@
 <%@ include file="/WEB-INF/template/include.jsp"%>
 <c:if test="${hasPermission}">
 <%@ include file="/WEB-INF/template/header.jsp"%>
-<link rel="stylesheet" href="<openmrs:contextPath/>/moduleResources/journaling/css/journal.css" type="text/css"/>
+<link rel="stylesheet" href="<openmrs:contextPath/>/moduleResources/phrjournal/css/journal.css" type="text/css"/>
 
 	<div id="module-content">
 		<div id="nav-bar">
@@ -15,7 +15,7 @@
 			<div id="search-pane">
 				<span id="search-text"></span>
 				<div id="search-action-div">  
-					<form id="search-form" method="get" action="<openmrs:contextPath/>/module/journaling/journal.form">  
+					<form id="search-form" method="get" action="<openmrs:contextPath/>/module/phrjournal/journal.form">  
 						<input type="text" id="search-box" name="search" ></input>
 						<input id="search-button" type="submit" value="Search"></input>
 					</form>
@@ -23,7 +23,7 @@
 			</div>
 			<c:if test="${empty entries}">
 				<div id="no-results">
-					<span id="no-results-text">You don't have any journal entries yet.<br><br> Why don't you <a href="<openmrs:contextPath/>/module/journaling/new_entry.form">write</a> one?</span>
+					<span id="no-results-text">You don't have any journal entries yet.<br><br> Why don't you <a href="<openmrs:contextPath/>/module/phrjournal/new_entry.form">write</a> one?</span>
 				</div>
 			</c:if>
 			<c:forEach var="entry" items="${entries}">
@@ -90,7 +90,7 @@
 		listHTML = listHTML.replace(new RegExp("#mon",'g'),monthString);
 		var monthList = $j(listHTML);
 		for(var i = 0; i < posts.length; i++){
-			$j("<li><a class=\"post-link\" href=\"<openmrs:contextPath/>/module/journaling/journal.form?id="+posts[i].entryId+"\">"+posts[i].title+"</a></li>").appendTo(monthList.find("#"+idString+"-list"));
+			$j("<li><a class=\"post-link\" href=\"<openmrs:contextPath/>/module/phrjournal/journal.form?id="+posts[i].entryId+"\">"+posts[i].title+"</a></li>").appendTo(monthList.find("#"+idString+"-list"));
 		}
 		monthList.appendTo("#month-list");
 	}

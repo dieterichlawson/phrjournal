@@ -1,6 +1,6 @@
 <%@ include file="/WEB-INF/template/include.jsp"%>
 <c:if test="${hasPermission}">
-<link rel="stylesheet" href="<openmrs:contextPath/>/moduleResources/journaling/css/journal.css" type="text/css"/>
+<link rel="stylesheet" href="<openmrs:contextPath/>/moduleResources/phrjournal/css/journal.css" type="text/css"/>
 
 	<div id="module-content">
 		<div id="entry-pane">
@@ -59,7 +59,7 @@
 		listHTML = listHTML.replace(new RegExp("#mon",'g'),monthString);
 		var monthList = $j(listHTML);
 		for(var i = 0; i < posts.length; i++){
-			$j("<li><a class=\"post-link\" href=\"<openmrs:contextPath/>/module/journaling/journal.form?id="+posts[i].entryId+"\">"+posts[i].title+"</a></li>").appendTo(monthList.find("#"+idString+"-list"));
+			$j("<li><a class=\"post-link\" href=\"<openmrs:contextPath/>/module/phrjournal/journal.form?id="+posts[i].entryId+"\">"+posts[i].title+"</a></li>").appendTo(monthList.find("#"+idString+"-list"));
 		}
 		monthList.appendTo("#month-list");
 	}

@@ -3,19 +3,19 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.openmrs.module</groupId>
-		<artifactId>journaling</artifactId>
+		<artifactId>phrjournal</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>org.openmrs.module</groupId>
-	<artifactId>journaling-omod</artifactId>
+	<artifactId>phrjournal-omod</artifactId>
 	<packaging>omod</packaging>
-	<name>Journaling Module OMOD</name>
-	<description>OpenMRS module project for the Journaling Module</description>
+	<name>PHR Journal Module OMOD</name>
+	<description>OpenMRS module project for the PHR Journal Module</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
-			<artifactId>journaling-api</artifactId>
+			<artifactId>phrjournal-api</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 		

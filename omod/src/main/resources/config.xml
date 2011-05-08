@@ -2,8 +2,8 @@
 
 <module configVersion="1.2">
 	
-	<id>journaling</id>
-	<name>Journaling Module</name>
+	<id>phrjournal</id>
+	<name>PHR Journal Module</name>
 	<version>0.1</version>
 	<package>org.openmrs.module.@MODULE_ID@</package>
 	<author>Dieterich Lawson</author>
@@ -47,10 +47,10 @@
 	
 	<dwr>
 		<allow>	
-			<convert converter="bean" match="org.openmrs.module.journaling.domain.JournalEntry" />
+			<convert converter="bean" match="org.openmrs.module.phrjournal.domain.JournalEntry" />
 						
 			<create creator="new" javascript="DWRJournalEntryService">
-				<param name="class" value="org.openmrs.module.journaling.web.dwr.DWRJournalEntryService"/>
+				<param name="class" value="org.openmrs.module.phrjournal.web.dwr.DWRJournalEntryService"/>
 				<include method="getJournalEntries"/>
 			</create>
 		</allow>

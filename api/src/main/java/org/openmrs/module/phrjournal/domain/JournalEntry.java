@@ -11,7 +11,7 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.journaling.domain;
+package org.openmrs.module.phrjournal.domain;
 
 import java.util.Date;
 

@@ -11,7 +11,7 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.journaling.web.controller;
+package org.openmrs.module.phrjournal.web.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.openmrs.Patient;
 import org.openmrs.User;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.journaling.JournalEntryService;
-import org.openmrs.module.journaling.domain.JournalEntry;
+import org.openmrs.module.phrjournal.JournalEntryService;
+import org.openmrs.module.phrjournal.domain.JournalEntry;
 import org.openmrs.web.controller.PortletController;
 import org.springframework.stereotype.Controller;
 

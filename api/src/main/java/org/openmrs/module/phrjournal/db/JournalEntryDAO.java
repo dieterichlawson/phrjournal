@@ -11,12 +11,12 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.journaling.db;
+package org.openmrs.module.phrjournal.db;
 
 import java.util.List;
 
 import org.openmrs.Person;
-import org.openmrs.module.journaling.domain.JournalEntry;
+import org.openmrs.module.phrjournal.domain.JournalEntry;
 
 public interface JournalEntryDAO {
 

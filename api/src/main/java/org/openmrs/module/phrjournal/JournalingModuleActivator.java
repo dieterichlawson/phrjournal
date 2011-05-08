@@ -1,4 +1,4 @@
-package org.openmrs.module.journaling;
+package org.openmrs.module.phrjournal;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -15,14 +15,14 @@ public class JournalingModuleActivator implements Activator {
 	 * @see org.openmrs.module.Activator#startup()
 	 */
 	public void startup() {
-		log.info("Starting Basic Module");
+		log.info("Starting PHR Journal Module");
 	}
 	
 	/**
 	 * @see org.openmrs.module.Activator#shutdown()
 	 */
 	public void shutdown() {
-		log.info("Shutting down Basic Module");
+		log.info("Shutting down PHR Journal Module");
 	}
 	
 }

@@ -13,18 +13,18 @@
            
 	<context:component-scan base-package="@MODULE_PACKAGE@.web.controller" />
 
-	<bean id="journalingMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<bean id="phrjournalMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="order"><value>2</value></property>
 		<property name="mappings">
 			<props>
 				<prop key="**/journalTab.portlet">journalTabController</prop>
-				<prop key="module/journaling/journal.form">journalController</prop>
-				<prop key="module/journaling/new_entry.form">newEntryController</prop>
+				<prop key="module/phrjournal/journal.form">journalController</prop>
+				<prop key="module/phrjournal/new_entry.form">newEntryController</prop>
 			</props>
 		</property>
 	</bean>
 		
-	<bean id="journalController" class="org.openmrs.module.journaling.web.controller.JournalController" />
-	<bean id="newEntryController" class="org.openmrs.module.journaling.web.controller.NewEntryController" />
-	<bean id="journalTabController" class="org.openmrs.module.journaling.web.controller.JournalTabController" />
+	<bean id="journalController" class="org.openmrs.module.phrjournal.web.controller.JournalController" />
+	<bean id="newEntryController" class="org.openmrs.module.phrjournal.web.controller.NewEntryController" />
+	<bean id="journalTabController" class="org.openmrs.module.phrjournal.web.controller.JournalTabController" />
 </beans>

@@ -11,16 +11,16 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.journaling.impl;
+package org.openmrs.module.phrjournal.impl;
 
 import java.util.List;
 
 import org.openmrs.Person;
 import org.openmrs.api.APIException;
 import org.openmrs.api.impl.BaseOpenmrsService;
-import org.openmrs.module.journaling.JournalEntryService;
-import org.openmrs.module.journaling.db.JournalEntryDAO;
-import org.openmrs.module.journaling.domain.JournalEntry;
+import org.openmrs.module.phrjournal.JournalEntryService;
+import org.openmrs.module.phrjournal.db.JournalEntryDAO;
+import org.openmrs.module.phrjournal.domain.JournalEntry;
 
 /**
  *
@@ -34,42 +34,42 @@ public class JournalEntryServiceImpl extends BaseOpenmrsService implements Journ
 	}
 	
 	/**
-	 * @see org.openmrs.module.journaling.JournalEntryService#deleteJournalEntry(org.openmrs.module.journaling.domain.JournalEntry)
+	 * @see org.openmrs.module.phrjournal.JournalEntryService#deleteJournalEntry(org.openmrs.module.phrjournal.domain.JournalEntry)
 	 */
 	public void deleteJournalEntry(JournalEntry entry) throws APIException {
 		dao.deleteJournalEntry(entry);
 	}
 	
 	/**
-	 * @see org.openmrs.module.journaling.JournalEntryService#getAllJournalEntries()
+	 * @see org.openmrs.module.phrjournal.JournalEntryService#getAllJournalEntries()
 	 */
 	public List<JournalEntry> getAllJournalEntries() {
 		return dao.getAllJournalEntries();
 	}
 	
 	/**
-	 * @see org.openmrs.module.journaling.JournalEntryService#getJournalEntry(java.lang.Integer)
+	 * @see org.openmrs.module.phrjournal.JournalEntryService#getJournalEntry(java.lang.Integer)
 	 */
 	public JournalEntry getJournalEntry(Integer entryId) {
 		return dao.getJournalEntry(entryId);
 	}
 	
 	/**
-	 * @see org.openmrs.module.journaling.JournalEntryService#saveJournalEntry(org.openmrs.module.journaling.domain.JournalEntry)
+	 * @see org.openmrs.module.phrjournal.JournalEntryService#saveJournalEntry(org.openmrs.module.phrjournal.domain.JournalEntry)
 	 */
 	public void saveJournalEntry(JournalEntry entry) throws APIException {
 		dao.saveJournalEntry(entry);
 	}
 
 	/**
-     * @see org.openmrs.module.journaling.JournalEntryService#getJournalEntryForPerson(org.openmrs.Person)
+     * @see org.openmrs.module.phrjournal.JournalEntryService#getJournalEntryForPerson(org.openmrs.Person)
      */
     public List<JournalEntry> getJournalEntryForPerson(Person p, Boolean orderByDateDesc ) {
 	    return dao.getJournalEntryForPerson(p, orderByDateDesc);
     }
 
 	/**
-     * @see org.openmrs.module.journaling.JournalEntryService#findEntries(java.lang.String, org.openmrs.Person, java.lang.Boolean)
+     * @see org.openmrs.module.phrjournal.JournalEntryService#findEntries(java.lang.String, org.openmrs.Person, java.lang.Boolean)
      */
     public List<JournalEntry> findEntries(String searchText, Person p, Boolean orderByDateDesc) {
 	    return dao.findEntries(searchText,p,orderByDateDesc);

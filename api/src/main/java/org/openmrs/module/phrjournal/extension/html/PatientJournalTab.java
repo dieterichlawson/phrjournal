@@ -1,4 +1,4 @@
-package org.openmrs.module.journaling.extension.html;
+package org.openmrs.module.phrjournal.extension.html;
 
 import org.openmrs.module.Extension;
 import org.openmrs.module.web.extension.PatientDashboardTabExt;
