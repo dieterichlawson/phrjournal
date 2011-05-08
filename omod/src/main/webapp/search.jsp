@@ -14,16 +14,16 @@
 		<div id="entry-pane">
 			<div id="search-pane">
 				<span id="search-text"></span>
-				<div id="search-action-div">  
-					<form id="search-form" method="get" action="<openmrs:contextPath/>/module/journaling/search.form">  
-						<input type="text" id="search-box" name="searchText"></input>
+				<div id="search-action-div">
+					<form method="get" action="<openmrs:contextPath/>/module/journaling/search.form" id="search-form">    
+						<input type="text" id="search-box" name="searchText" value="${searchText}"></input>
 						<input id="search-button" type="submit" value="Search"></input>
 					</form>
 				</div>
 			</div>
 			<c:if test="${empty entries}">
 				<div id="no-results">
-					<span id="no-results-text">You don't have any journal entries yet.<br><br> Why don't you <a href="<openmrs:contextPath/>/module/journaling/new_entry.form">write</a> one?</span>
+					<span id="no-results-text">There were no journal entries matching your search.</span>
 				</div>
 			</c:if>
 			<c:forEach var="entry" items="${entries}">
@@ -78,7 +78,7 @@
 		listHTML = listHTML.replace(new RegExp("#mon",'g'),monthString);
 		var monthList = $j(listHTML);
 		for(var i = 0; i < posts.length; i++){
-			$j("<li><a class=\"post-link\" href=\"<openmrs:contextPath/>/module/journaling/journal.form?id="+posts[i].entryId+"\">"+posts[i].title+"</a></li>").appendTo(monthList.find("#"+idString+"-list"));
+			$j("<li><a class=\"post-link\" href=\"#\">"+posts[i].title+"</a></li>").appendTo(monthList.find("#"+idString+"-list"));
 		}
 		monthList.appendTo("#month-list");
 	}
@@ -86,5 +86,4 @@
 	function expand(toExpand){
 		$j("#"+toExpand).toggle(100);
 	}
-
 </script>

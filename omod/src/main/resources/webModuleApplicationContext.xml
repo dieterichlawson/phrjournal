@@ -17,12 +17,14 @@
 		<property name="order"><value>2</value></property>
 		<property name="mappings">
 			<props>
-				<prop key="module/journaling/jounal.form">journalController</prop>
+				<prop key="module/journaling/journal.form">journalController</prop>
+				<prop key="module/journaling/search.form">searchController</prop>
 				<prop key="module/journaling/new_entry.form">newEntryController</prop>
 			</props>
 		</property>
 	</bean>
 		
 	<bean id="journalController" class="org.openmrs.module.journaling.web.controller.JournalController" />
+	<bean id="searchController" class="org.openmrs.module.journaling.web.controller.SearchController" />
 	<bean id="newEntryController" class="org.openmrs.module.journaling.web.controller.NewEntryController" />
 </beans>

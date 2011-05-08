@@ -13,7 +13,6 @@
  */
 package org.openmrs.module.journaling.web.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,19 +27,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class JournalController {
-
-	@RequestMapping(value="/module/journaling/journal", method=RequestMethod.GET)
-	public void getEntry(@RequestParam(value="id",required=false) Integer id, HttpServletRequest request){
+public class SearchController {
+	
+	@RequestMapping(value="/module/journaling/search", method=RequestMethod.GET)
+	public void populateModel(@RequestParam(value="searchText",required=false) String searchText, HttpServletRequest request){
 		HttpSession session = request.getSession();
-		if(id != null){
-			List<JournalEntry> entries = new ArrayList<JournalEntry>();
-			JournalEntry entry= Context.getService(JournalEntryService.class).getJournalEntry(id);
-			entries.add(entry);
-			session.setAttribute("entries", entries);
-		}else{
-			List<JournalEntry> entries = Context.getService(JournalEntryService.class).getJournalEntryForPerson(Context.getAuthenticatedUser().getPerson(),true);
-			session.setAttribute("entries", entries);
-		}
+		List<JournalEntry> entries = Context.getService(JournalEntryService.class).findEntries(searchText, Context.getAuthenticatedUser().getPerson(), true);
+		session.setAttribute("entries", entries);
+		session.setAttribute("searchText", searchText);
 	}
 }
