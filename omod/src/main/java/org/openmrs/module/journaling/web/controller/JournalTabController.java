@@ -14,26 +14,35 @@
 package org.openmrs.module.journaling.web.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
+import org.openmrs.Patient;
+import org.openmrs.User;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.journaling.JournalEntryService;
 import org.openmrs.module.journaling.domain.JournalEntry;
+import org.openmrs.web.controller.PortletController;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class SearchController {
+public class JournalTabController extends PortletController{
+
+	@Override
+	protected void populateModel(HttpServletRequest request, Map<String, Object> model) {
+		User u = Context.getAuthenticatedUser();
+		if(hasPermission(u)){
+			Patient p = (Patient) model.get("patient");
+			List<JournalEntry> entries = Context.getService(JournalEntryService.class).getJournalEntryForPerson(p, true);
+			request.setAttribute("entries", entries);
+			request.setAttribute("hasPermission", true);
+		}else{
+			request.setAttribute("hasPermission", false);
+		}
+	}
 	
-	@RequestMapping(value="/module/journaling/search", method=RequestMethod.GET)
-	public void populateModel(@RequestParam(value="searchText",required=false) String searchText, HttpServletRequest request){
-		HttpSession session = request.getSession();
-		List<JournalEntry> entries = Context.getService(JournalEntryService.class).findEntries(searchText, Context.getAuthenticatedUser().getPerson(), true);
-		session.setAttribute("entries", entries);
-		session.setAttribute("searchText", searchText);
+	private boolean hasPermission(User u){
+		return true;
 	}
 }

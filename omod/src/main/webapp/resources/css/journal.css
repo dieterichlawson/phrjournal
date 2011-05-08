@@ -10,6 +10,7 @@ ol{
 }
 .month-link {
         list-style:disc;
+        cursor:pointer;
 }
 ol a:link, ol a:visited{
         text-decoration:none;
@@ -26,6 +27,7 @@ ol a:hover, ol a:active{
         width:80%;
         margin:auto;
         position:relative;
+        margin-top:20px;
 }
 #nav-bar{
         float:left;

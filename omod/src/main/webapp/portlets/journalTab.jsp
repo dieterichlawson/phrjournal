@@ -1,29 +1,12 @@
 <%@ include file="/WEB-INF/template/include.jsp"%>
-
-<%@ include file="/WEB-INF/template/header.jsp"%>
+<c:if test="${hasPermission}">
 <link rel="stylesheet" href="<openmrs:contextPath/>/moduleResources/journaling/css/journal.css" type="text/css"/>
 
 	<div id="module-content">
-		<div id="nav-bar">
-			<button id="new-entry-button" type="button" onclick="newEntry(); return false;">New Entry</button>
-			<div id="entries-by-month-nav">
-				 <span id="month-title-span">Past Entries</span>
-				<ol id="month-list"></ol>
-			</div>
-		</div>
 		<div id="entry-pane">
-			<div id="search-pane">
-				<span id="search-text"></span>
-				<div id="search-action-div">
-					<form method="get" action="<openmrs:contextPath/>/module/journaling/search.form" id="search-form">    
-						<input type="text" id="search-box" name="searchText" value="${searchText}"></input>
-						<input id="search-button" type="submit" value="Search"></input>
-					</form>
-				</div>
-			</div>
 			<c:if test="${empty entries}">
 				<div id="no-results">
-					<span id="no-results-text">There were no journal entries matching your search.</span>
+					<span id="no-results-text">This person has not written any journal entries yet.</span>
 				</div>
 			</c:if>
 			<c:forEach var="entry" items="${entries}">
@@ -37,8 +20,6 @@
 			</c:forEach>
 		</div>
 	</div>
-
-<%@ include file="/WEB-INF/template/footer.jsp" %>
 <openmrs:htmlInclude file="/dwr/engine.js"/>
 <openmrs:htmlInclude file="/dwr/util.js"/>
 <script src="<openmrs:contextPath/>/dwr/interface/DWRJournalEntryService.js"></script>
@@ -78,7 +59,7 @@
 		listHTML = listHTML.replace(new RegExp("#mon",'g'),monthString);
 		var monthList = $j(listHTML);
 		for(var i = 0; i < posts.length; i++){
-			$j("<li><a class=\"post-link\" href=\"#\">"+posts[i].title+"</a></li>").appendTo(monthList.find("#"+idString+"-list"));
+			$j("<li><a class=\"post-link\" href=\"<openmrs:contextPath/>/module/journaling/journal.form?id="+posts[i].entryId+"\">"+posts[i].title+"</a></li>").appendTo(monthList.find("#"+idString+"-list"));
 		}
 		monthList.appendTo("#month-list");
 	}
@@ -86,4 +67,9 @@
 	function expand(toExpand){
 		$j("#"+toExpand).toggle(100);
 	}
+
 </script>
+</c:if>
+<c:if test="${!hasPermission}">
+<h2>You do not have permission to view this person's journal entries.</h2>
+</c:if>

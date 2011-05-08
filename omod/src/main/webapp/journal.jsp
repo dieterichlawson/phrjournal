@@ -1,5 +1,5 @@
 <%@ include file="/WEB-INF/template/include.jsp"%>
-
+<c:if test="${hasPermission}">
 <%@ include file="/WEB-INF/template/header.jsp"%>
 <link rel="stylesheet" href="<openmrs:contextPath/>/moduleResources/journaling/css/journal.css" type="text/css"/>
 
@@ -15,8 +15,8 @@
 			<div id="search-pane">
 				<span id="search-text"></span>
 				<div id="search-action-div">  
-					<form id="search-form" method="get" action="<openmrs:contextPath/>/module/journaling/search.form">  
-						<input type="text" id="search-box" name="searchText"></input>
+					<form id="search-form" method="get" action="<openmrs:contextPath/>/module/journaling/journal.form">  
+						<input type="text" id="search-box" name="search" ></input>
 						<input id="search-button" type="submit" value="Search"></input>
 					</form>
 				</div>
@@ -47,7 +47,19 @@
 
 	$j(document).ready(function(){
 		DWRJournalEntryService.getJournalEntries(function(posts){createNavList(posts)});
+		$j("#search-box").val(gup("search"));
 	});
+
+	function gup(name){
+	  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+	  var regexS = "[\\?&]"+name+"=([^&#]*)";
+	  var regex = new RegExp( regexS );
+	  var results = regex.exec( window.location.href );
+	  if( results == null )
+	    return "";
+	  else
+	    return results[1];
+	}
 	
 	function newEntry(){
 		window.location="new_entry.form";
@@ -70,7 +82,7 @@
 	}
 	
 	function createMonth(posts){
-		var listHTML = "<li><a href=\"#\" class=\"month-link\" onclick=\"expand('#id-list')\" id=\"#id-link\">#mon</a><ol id=\"#id-list\" style=\"display:none;\"></ol></li>"
+		var listHTML = "<li><span class=\"month-link\" onclick=\"expand('#id-list')\" id=\"#id-link\">#mon</span><ol id=\"#id-list\" style=\"display:none;\"></ol></li>"
 		var date = new Date(posts[0].dateCreated);
 		var idString = date.getMonth() + "-" + date.getFullYear();
 		var monthString = months[date.getMonth()];
@@ -88,3 +100,7 @@
 	}
 
 </script>
+</c:if>
+<c:if test="${!hasPermission}">
+	<h2>You do not have permission to view this journal entry.</h2>
+</c:if>

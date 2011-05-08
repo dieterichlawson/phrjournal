@@ -19,8 +19,7 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.journaling.JournalEntryService;
 import org.openmrs.module.journaling.domain.JournalEntry;
 
-public class DWRJournalEntryService {
-	
+public class DWRJournalEntryService {	
 	public List<JournalEntry> getJournalEntries(){
 		return Context.getService(JournalEntryService.class).getJournalEntryForPerson(Context.getAuthenticatedUser().getPerson(), true);
 	}

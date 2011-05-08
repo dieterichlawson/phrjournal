@@ -19,6 +19,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.openmrs.User;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.journaling.JournalEntryService;
 import org.openmrs.module.journaling.domain.JournalEntry;
@@ -31,16 +32,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class JournalController {
 
 	@RequestMapping(value="/module/journaling/journal", method=RequestMethod.GET)
-	public void getEntry(@RequestParam(value="id",required=false) Integer id, HttpServletRequest request){
+	public void getEntry(@RequestParam(value="id",required=false) Integer id,
+	                     @RequestParam(value="search",required=false) String searchText,
+	                     HttpServletRequest request){
 		HttpSession session = request.getSession();
+		session.setAttribute("hasPermission",true);
+		User user = Context.getAuthenticatedUser();
+		
 		if(id != null){
 			List<JournalEntry> entries = new ArrayList<JournalEntry>();
 			JournalEntry entry= Context.getService(JournalEntryService.class).getJournalEntry(id);
 			entries.add(entry);
+			if(hasPermission(user,entry)){
+				session.setAttribute("entries", entries);
+			}else{
+				session.setAttribute("hasPermission",false);
+			}
+		}else if(searchText != null && !searchText.trim().equals("")){
+			List<JournalEntry> entries = Context.getService(JournalEntryService.class).findEntries(searchText, user.getPerson(), true);
 			session.setAttribute("entries", entries);
 		}else{
-			List<JournalEntry> entries = Context.getService(JournalEntryService.class).getJournalEntryForPerson(Context.getAuthenticatedUser().getPerson(),true);
+			List<JournalEntry> entries = Context.getService(JournalEntryService.class).getJournalEntryForPerson(user.getPerson(),true);
 			session.setAttribute("entries", entries);
 		}
+	}
+	
+	private boolean hasPermission(User u, JournalEntry entry){
+		return true;
 	}
 }
