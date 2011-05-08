@@ -9,7 +9,7 @@
 	<groupId>org.openmrs.module</groupId>
 	<artifactId>phrjournal-api</artifactId>
 	<packaging>jar</packaging>
-	<name>PHR phrjournal Module API</name>
+	<name>PHR Journal Module API</name>
 	<description>API project for PHR Journal Module</description>
 
 	<dependencies>
